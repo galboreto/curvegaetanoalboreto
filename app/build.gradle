@@ -15,6 +15,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        //Todo store api key in a more secure way
         buildConfigField 'String', 'API_KEY', '"56cd2f1d65dc2dee23040b580cbd8712"'
     }
     buildTypes {
@@ -55,6 +56,11 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
 
     testImplementation 'junit:junit:4.12'
+    testImplementation 'com.squareup.okhttp3:mockwebserver:4.2.0'
+    testImplementation 'org.mockito:mockito-core:3.0.0'
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+    testImplementation "io.mockk:mockk:1.9.3"
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
