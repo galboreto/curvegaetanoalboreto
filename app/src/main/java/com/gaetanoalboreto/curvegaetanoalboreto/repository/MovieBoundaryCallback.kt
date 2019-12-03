@@ -30,6 +30,7 @@ class MovieBoundaryCallback(
 
     private fun fetchData(page: Int = 1) {
         Log.v(TAG, "Fetching data, page=$page")
+        //todo dismiss this properly
         service.getPopularMovies(page)
             .subscribeOn(Schedulers.newThread())
             .observeOn(Schedulers.newThread())

@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.getPopularMovies().observe(this, Observer {
             adapter.submitList(it)
-            if (it.loadedCount != 0) loadingProgressBar.visibility = GONE
+            if (it.loadedCount != 0) loadingProgressBar.visibility = GONE //Improve
         })
     }
 }

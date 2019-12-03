@@ -14,7 +14,7 @@ class MovieApplication : Application() {
 
             androidContext(applicationContext)
 
-            modules(appModule)
+            modules(appModule) //Todo use more modules instead of one global module
         }
     }
 }
