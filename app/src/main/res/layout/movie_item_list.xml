@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="movie"
+            type="com.gaetanoalboreto.curvegaetanoalboreto.model.Movie" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/movie_item_list_height"
+        android:layout_margin="4dp"
+        app:cardPreventCornerOverlap="false">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/movie_item_list_height">
+
+            <ImageView
+                android:id="@+id/movie_poster_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:moviePosterUrl="@{movie.posterPath}"
+                tools:layout_width="100dp" />
+
+            <ProgressBar
+                android:id="@+id/movie_rate_pb"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="0"
+                android:progressDrawable="@drawable/circle_progress"
+                app:layout_constrainedHeight="true"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintStart_toEndOf="@id/movie_poster_iv"
+                app:layout_constraintTop_toTopOf="parent"
+                app:progressPercentage="@{movie.voteAverage * 10}" />
+
+            <TextView
+                android:id="@+id/movie_rate_tv"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@{movie.voteAverage * 10}"
+                android:textColor="@color/white"
+                app:layout_constrainedHeight="true"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintBottom_toBottomOf="@id/movie_rate_pb"
+                app:layout_constraintEnd_toEndOf="@id/movie_rate_pb"
+                app:layout_constraintStart_toEndOf="@id/movie_poster_iv"
+                app:layout_constraintStart_toStartOf="@id/movie_rate_pb"
+                app:layout_constraintTop_toTopOf="@id/movie_rate_pb"
+                tools:text="99" />
+
+            <TextView
+                android:id="@+id/movie_title_tv"
+                style="@style/ItemTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@{movie.title}"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@id/movie_rate_pb"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Movie Title" />
+
+            <TextView
+                android:id="@+id/release_date_tv"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{movie.releaseDate}"
+                app:layout_constraintStart_toStartOf="@id/movie_title_tv"
+                app:layout_constraintTop_toBottomOf="@id/movie_title_tv"
+                tools:text="01-01-2001" />
+
+            <TextView
+                android:id="@+id/description_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:ellipsize="end"
+                android:maxLines="4"
+                android:text="@{movie.overview}"
+                app:layout_constrainedHeight="true"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@id/movie_poster_iv"
+                app:layout_constraintTop_toBottomOf="@id/release_date_tv"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="This is a movie description" />
+
+            <ImageView
+                android:id="@+id/favorite_icon_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@{ movie.favorite ? @drawable/ic_favorite_24dp : @drawable/ic_favorite_border_24dp }"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_favorite_24dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
